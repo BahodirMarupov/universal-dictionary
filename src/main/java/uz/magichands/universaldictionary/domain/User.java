@@ -20,7 +20,7 @@ public class User extends DateAudit implements UserDetails {
     @Column(nullable = false)
     private String firstName;
     private String lastName;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
     @Column(nullable = false)
     private String password;
@@ -31,8 +31,8 @@ public class User extends DateAudit implements UserDetails {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles=new HashSet<>();
+            joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -93,8 +93,13 @@ public class User extends DateAudit implements UserDetails {
         this.lastName = lastName;
     }
 
+
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setPassword(String password) {
