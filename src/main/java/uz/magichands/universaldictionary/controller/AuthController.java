@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.magichands.universaldictionary.payload.RegisterDto;
+import uz.magichands.universaldictionary.repository.UserRepository;
 import uz.magichands.universaldictionary.service.UserService;
 
 import javax.validation.Valid;
@@ -18,7 +19,8 @@ import javax.validation.Valid;
 public class AuthController {
     @Autowired
     private UserService service;
-
+    @Autowired
+    private UserRepository userRepository;
     @PostMapping("/login")
     public ResponseEntity<?> login() {
         return null;
@@ -26,7 +28,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterDto registerDto) {
-
         return new ResponseEntity<>(service.saveUser(registerDto), HttpStatus.CREATED);
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class SpecialExceptionHandler {
+public class CustomExceptionHandler {
 
     @ExceptionHandler(ConfirmPasswordException.class)
     public ResponseEntity<?> confirmPasswordException(ConfirmPasswordException e) {
