@@ -12,6 +12,8 @@ import uz.magichands.universaldictionary.payload.RegisterDto;
 import uz.magichands.universaldictionary.repository.UserRepository;
 import uz.magichands.universaldictionary.utils.UserDtoConvertor;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
@@ -23,6 +25,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return null;
+    }
+
+    public User loadUserById(Long id){
+        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Foydalanuvchi topilmadi!"));
     }
 
     public UserDetails saveUser(RegisterDto registerDto) {
